@@ -3,13 +3,13 @@ describe('template spec', () => {
     let kontostand;
     let gebuchteTage = [];
 
-    cy.visit('');
-    cy.get('#tbxEinrichtung').type('');
-    cy.get('#tbxBenutzername').type('');
-    cy.get('#tbxKennwort').type('');
+    cy.visit(Cypress.env('login_url'));
+    cy.get('#tbxEinrichtung').type(Cypress.env('einrichtung'));
+    cy.get('#tbxBenutzername').type(Cypress.env('username'));
+    cy.get('#tbxKennwort').type(Cypress.env('password'));
     cy.get('#btnLogin').click();
 
-    cy.visit('https://login.mensaservice.de/mensamax/Essenbestellung/bestellen-stornieren/PlanForm.aspx');
+    cy.visit(Cypress.env('order_url'));
     cy.get('#lblKontostand').should('be.visible');
     cy.get('#lblKontostand').invoke('text')
       .then(text => {
