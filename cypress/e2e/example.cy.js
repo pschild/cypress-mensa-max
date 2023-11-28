@@ -22,6 +22,6 @@ describe('template spec', () => {
       .then(() => cy.get('#btnVor').click())
       .then(() => cy.getOrdersOfVisibleWeek())
       .then(orders => daysWithOrder = [...daysWithOrder, ...orders])
-      .then(() => cy.writeFile('./result.json', { now, balance, daysWithOrder }));
+      .then(() => cy.writeFile('./result.json', { crawlTime: now, balance, daysWithOrder }));
   })
 });
